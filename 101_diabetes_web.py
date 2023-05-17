@@ -35,7 +35,7 @@ deployment_environment = "render"  # Replace this with the appropriate deploymen
 if deployment_environment == "local":
     file_path = "C:/Users/nakul/OneDrive/Desktop/Hustle!/Diabetes_model.sav"
 elif deployment_environment == "render":
-    file_path = "model/Diabetes_model.sav"
+    file_path = "Model/Diabetes_model.sav"
 else:
     file_path = "default/file/path"  # Set a default file path if none of the environments match
 
