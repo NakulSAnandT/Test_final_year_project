@@ -1,7 +1,7 @@
 import numpy as np
 import pickle
 import streamlit as st
-
+import os
 # Set page configuration
 st.set_page_config(
     page_title="DIABETES PREDICTION WEB APPLICATION",
@@ -29,7 +29,19 @@ image = "C:/Users/nakul/Downloads/images.jpeg"  # Replace with the path to your 
 st.image(image, width = 600)
 
 # Load the saved model and scaler
-data = pickle.load(open("C:/Users/nakul/OneDrive/Desktop/Hustle!/Diabetes_model.sav", 'rb'))
+
+deployment_environment = "render"  # Replace this with the appropriate deployment environment
+
+if deployment_environment == "local":
+    file_path = "C:/Users/nakul/OneDrive/Desktop/Hustle!/Diabetes_model.sav"
+elif deployment_environment == "render":
+    file_path = "/app/Diabetes_model.sav"
+else:
+    file_path = "default/file/path"  # Set a default file path if none of the environments match
+
+data = pickle.load(open(file_path, 'rb'))
+
+#data = pickle.load(open("C:/Users/nakul/OneDrive/Desktop/Hustle!/Diabetes_model.sav", 'rb'))
 loaded_model = data['model']
 scaler = data['scaler']
 
